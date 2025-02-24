@@ -6,9 +6,9 @@ import Product from './models/product.models.js'
 dotenv.config()
 
 const app = express()
+app.use(express.json())
 
-
-app.post('/products', async (req, res) => {
+app.post('/api/products', async (req, res) => {
   const product = req.body
 
   if (!product.name || !product.price || !product.image) {
@@ -18,7 +18,7 @@ app.post('/products', async (req, res) => {
     })
   }
 
-  const newProduct = newProduct(product)
+  const newProduct = new Product(product)
   try {
     await newProduct.save()
     res.status(201).json ({
