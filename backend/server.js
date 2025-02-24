@@ -1,4 +1,7 @@
 import express from 'express'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express()
 
@@ -11,6 +14,8 @@ app.get('/', (req, res) => {
     </div>
   `)
 })
+
+console.log((process.env.MONGO_URI))
 
 app.listen(5000, () => {
   console.log(`Server listening on Port 5000`)
