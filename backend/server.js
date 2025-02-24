@@ -8,6 +8,7 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 
+
 app.post('/api/products', async (req, res) => {
   const product = req.body
 
@@ -34,7 +35,9 @@ app.post('/api/products', async (req, res) => {
   }
 })
 
-app.listen(5000, () => {
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, () => {
   connectDB()
-  console.log(`Server listening on Port 5000`)
+  console.log(`Server listening on Port ${PORT}`)
 })
