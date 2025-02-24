@@ -6,14 +6,15 @@ dotenv.config()
 
 const app = express()
 
-app.get('/', (req, res) => {
-  res.send(`
-    <div>
-      <h1>Serapium</h1>
-      <hr />
-      <p>Inventory Management System</p>
-    </div>
-  `)
+app.post('/products', async (req, res) => {
+  const product = req.body
+
+  if (!product.name || !product.price || !product.image) {
+    return res.status(400).json({
+      success: false,
+      message: 'Please provide all fields'
+    })
+  }
 })
 
 app.listen(5000, () => {
