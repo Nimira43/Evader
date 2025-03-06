@@ -16,6 +16,5 @@
 .logo {
   font-family: 'Bonheur Royale', serif;
 }
-
 </style>
 
