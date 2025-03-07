@@ -50,6 +50,7 @@ class Box extends THREE.Mesh {
     this.height = height
     this.depth = depth
     this.bottom = this.position.y - this.height / 2
+    this.top = this.position.y + this.height / 2
   }
 }
 
