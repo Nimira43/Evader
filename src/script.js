@@ -69,10 +69,13 @@ class Box extends THREE.Mesh {
   update(group) {
     this.bottom = this.position.y - this.height / 2
     this.top = this.position.y + this.height / 2
-    this.velocity.y += -0.01
-    this.position.y += this.velocity.y
-  
-    if (this.bottom + this.velocity.y <= ground.top) this.velocity.y = -this.velocity.y
+    this.velocity.y += -0.005
+    
+    if (this.bottom + this.velocity.y <= ground.top) {
+      this.velocity.y = -this.velocity.y
+    } else {
+      this.position.y += this.velocity.y
+    }
   }
 }
 
