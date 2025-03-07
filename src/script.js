@@ -39,11 +39,12 @@ class Box extends THREE.Mesh {
   constructor({
     width,
     height,
-    depth
+    depth,
+    colour = '#ff4500'
   }) { 
     super(
       new THREE.BoxGeometry(width, height, depth),
-      new THREE.MeshStandardMaterial({ color: 0xff4500 })
+      new THREE.MeshStandardMaterial({ color: colour })
     )
     this.width = width
     this.height = height
@@ -62,7 +63,8 @@ scene.add(cube)
 const ground = new Box({
   width: 5,
   height: 0.5,
-  depth: 10
+  depth: 10,
+  colour: '#008080'
 })
   
 ground.receiveShadow = true
