@@ -40,7 +40,12 @@ class Box extends THREE.Mesh {
     width,
     height,
     depth,
-    colour = '#ff4500'
+    colour = '#ff4500',
+    velocity = {
+      x: 0,
+      y: 0,
+      z: 0
+    }
   }) { 
     super(
       new THREE.BoxGeometry(width, height, depth),
@@ -51,10 +56,12 @@ class Box extends THREE.Mesh {
     this.depth = depth
     this.bottom = this.position.y - this.height / 2
     this.top = this.position.y + this.height / 2
+    this.velocity = velocity
   }
   update() {
     this.bottom = this.position.y - this.height / 2
     this.top = this.position.y + this.height / 2
+    this.position.y += this.velocity.y
   }
 }
 
@@ -84,14 +91,11 @@ light.castShadow = true
 scene.add(light)
 camera.position.z = 5
 
-
-
 const animate = () => {
-  // cube.rotation.x += 0.01
-  // cube.rotation.y += 0.01
   controls.update()
   renderer.render(scene, camera)
   window.requestAnimationFrame(animate)
+  cube.update()
 
   // cube.position.y += -0.01
 }
