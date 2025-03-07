@@ -36,9 +36,12 @@ const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff4500 })
+const material = new THREE.MeshStandardMaterial({ color: 0xff4500 })
 const cube = new THREE.Mesh(geometry, material)
 scene.add(cube)
+
+const light = new THREE.DirectionalLight(0xffffff, 1)
+scene.add(light)
 
 const animate = () => {
   cube.rotation.x += 0.01
