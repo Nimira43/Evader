@@ -29,6 +29,7 @@ scene.add(camera)
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas
 })
+renderer.shadowMap.enabled = true
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
@@ -38,19 +39,23 @@ controls.enableDamping = true
 const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshStandardMaterial({ color: 0xff4500 })
 const cube = new THREE.Mesh(geometry, material)
+cube.castShadow = true
 scene.add(cube)
 
 const ground = new THREE.Mesh(
   new THREE.BoxGeometry(5, 0.5, 10),
-  new THREE.MeshPhongMaterial({
+  new THREE.MeshStandardMaterial({
     color: 0x008080
   })
 )
+ground.receiveShadow = true
 ground.position.y = -2
 scene.add(ground)
 
 const light = new THREE.DirectionalLight(0xffffff, 1)
-light.position.z = 3
+light.position.y = 3
+light.position.z = 2
+light.castShadow = true
 scene.add(light)
 
 const animate = () => {
