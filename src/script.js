@@ -49,6 +49,7 @@ class Box extends THREE.Mesh {
     this.width = width
     this.height = height
     this.depth = depth
+    this.bottom = this.position.y - this.height / 2
   }
 }
 
@@ -78,7 +79,7 @@ light.castShadow = true
 scene.add(light)
 camera.position.z = 5
 
-console.log(cube.position.y - cube.height / 2)
+
 
 const animate = () => {
   // cube.rotation.x += 0.01
