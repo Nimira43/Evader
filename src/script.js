@@ -41,11 +41,12 @@ const cube = new THREE.Mesh(geometry, material)
 scene.add(cube)
 
 const ground = new THREE.Mesh(
-  new THREE.BoxGeometry(1, 1, 1),
-  new THREE.MeshStandardMaterial({
-    color: 0xff4500
+  new THREE.BoxGeometry(5, 0.5, 10),
+  new THREE.MeshPhongMaterial({
+    color: 0x008080
   })
 )
+ground.position.y = -2
 scene.add(ground)
 
 const light = new THREE.DirectionalLight(0xffffff, 1)
