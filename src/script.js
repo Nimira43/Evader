@@ -71,7 +71,7 @@ class Box extends THREE.Mesh {
     this.top = this.position.y + this.height / 2
     this.position.y += this.velocity.y
   
-    if (this.bottom <= ground.top) this.velocity.y = 0
+    if (this.bottom + this.velocity.y <= ground.top) this.velocity.y = -this.velocity.y
   }
 }
 
