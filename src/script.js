@@ -40,10 +40,16 @@ const material = new THREE.MeshStandardMaterial({ color: 0xff4500 })
 const cube = new THREE.Mesh(geometry, material)
 scene.add(cube)
 
+const ground = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshStandardMaterial({
+    color: 0xff4500
+  })
+)
+scene.add(ground)
+
 const light = new THREE.DirectionalLight(0xffffff, 1)
 light.position.z = 3
-light.position.y = 7
-light.position.x = -4
 scene.add(light)
 
 const animate = () => {
