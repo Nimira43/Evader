@@ -60,12 +60,13 @@ class Box extends THREE.Mesh {
     this.width = width
     this.height = height
     this.depth = depth
+    this.position.set(position.x, position.y, position.z)
     this.bottom = this.position.y - this.height / 2
     this.top = this.position.y + this.height / 2
     this.velocity = velocity
-    this.position.set(position.x, position.y, position.z ) 
+     
   }
-  update(ground) {
+  update(group) {
     this.bottom = this.position.y - this.height / 2
     this.top = this.position.y + this.height / 2
     this.position.y += this.velocity.y
@@ -100,7 +101,6 @@ const ground = new Box({
 })
   
 ground.receiveShadow = true
-ground.position.y = -2
 scene.add(ground)
 
 const light = new THREE.DirectionalLight(0xffffff, 1)
