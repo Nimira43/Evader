@@ -23,7 +23,6 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 )
-camera.position.z = 5
 scene.add(camera)
 
 const renderer = new THREE.WebGLRenderer({
@@ -46,8 +45,9 @@ class Box extends THREE.Mesh {
       new THREE.BoxGeometry(width, height, depth),
       new THREE.MeshStandardMaterial({ color: 0xff4500 })
     )
-    this.height = 3
-
+    this.width = width
+    this.height = height
+    this.depth = depth
   }
 }
 
@@ -59,12 +59,12 @@ const cube = new Box({
 cube.castShadow = true
 scene.add(cube)
 
-const ground = new THREE.Mesh(
-  new THREE.BoxGeometry(5, 0.5, 10),
-  new THREE.MeshStandardMaterial({
-    color: 0x008080
-  })
-)
+const ground = new Box({
+  width: 5,
+  height: 0.5,
+  depth: 10
+})
+  
 ground.receiveShadow = true
 ground.position.y = -2
 scene.add(ground)
@@ -74,6 +74,9 @@ light.position.y = 3
 light.position.z = 2
 light.castShadow = true
 scene.add(light)
+camera.position.z = 5
+
+console.log(cube.position.y - cube.height / 2)
 
 const animate = () => {
   // cube.rotation.x += 0.01
