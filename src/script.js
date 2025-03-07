@@ -37,15 +37,25 @@ const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 
 class Box extends THREE.Mesh {
-  constructor() { 
+  constructor({
+    width,
+    height,
+    depth
+  }) { 
     super(
-      new THREE.BoxGeometry(1, 1, 1),
+      new THREE.BoxGeometry(width, height, depth),
       new THREE.MeshStandardMaterial({ color: 0xff4500 })
     )
+    this.height = 3
+
   }
 }
 
-const cube = new Box()
+const cube = new Box({
+  width: 1,
+  height: 1,
+  depth: 1,
+})
 cube.castShadow = true
 scene.add(cube)
 
