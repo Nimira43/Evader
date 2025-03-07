@@ -36,6 +36,12 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 
+class Box extends THREE.Mesh {
+  constructor() {
+    super(geometry, material)
+  }
+}
+
 const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshStandardMaterial({ color: 0xff4500 })
 const cube = new THREE.Mesh(geometry, material)
