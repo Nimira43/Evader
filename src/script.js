@@ -45,7 +45,13 @@ class Box extends THREE.Mesh {
       x: 0,
       y: 0,
       z: 0
+    },
+    position = {
+      x: 0,
+      y: 0,
+      z: 0
     }
+
   }) { 
     super(
       new THREE.BoxGeometry(width, height, depth),
@@ -57,11 +63,14 @@ class Box extends THREE.Mesh {
     this.bottom = this.position.y - this.height / 2
     this.top = this.position.y + this.height / 2
     this.velocity = velocity
+    this.position.set(position.x, position.y, position.z ) 
   }
-  update() {
+  update(ground) {
     this.bottom = this.position.y - this.height / 2
     this.top = this.position.y + this.height / 2
     this.position.y += this.velocity.y
+  
+    if (this.bottom <= ground.top) this.velocity.y = 0
   }
 }
 
@@ -100,7 +109,7 @@ const animate = () => {
   controls.update()
   renderer.render(scene, camera)
   window.requestAnimationFrame(animate)
-  cube.update()
+  cube.update(ground)
 
   // cube.position.y += -0.01
 }
