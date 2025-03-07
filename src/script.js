@@ -52,6 +52,10 @@ class Box extends THREE.Mesh {
     this.bottom = this.position.y - this.height / 2
     this.top = this.position.y + this.height / 2
   }
+  update() {
+    this.bottom = this.position.y - this.height / 2
+    this.top = this.position.y + this.height / 2
+  }
 }
 
 const cube = new Box({
