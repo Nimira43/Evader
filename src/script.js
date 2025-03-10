@@ -119,8 +119,6 @@ const animate = () => {
   renderer.render(scene, camera)
   window.requestAnimationFrame(animate)
   cube.update(ground)
-
-  // cube.position.y += -0.01
 }
 
 animate()
